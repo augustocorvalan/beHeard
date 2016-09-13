@@ -45,7 +45,8 @@ module.exports = {
       { 
         test: /\.css$/, 
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader?importLoaders=1!postcss-loader') 
-      }
+      },
+      { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'url-loader?limit=8192' }
     ]
   },
 
