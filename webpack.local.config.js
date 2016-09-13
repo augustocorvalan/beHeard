@@ -58,12 +58,8 @@ module.exports = {
   // Additional plugins for CSS post processing using postcss-loader
   postcss: [
     require('postcss-import')(),
-    require('postcss-nested')(), // Enable nested rules, like in Sass
-    require('postcss-custom-properties')(),
-    require('postcss-custom-media')(),
-    require('postcss-colour-functions')(),
+    require('postcss-cssnext')(), 
     require('postcss-focus')(), //add a :focus to every :hover
-    require('autoprefixer')(), // Automatically include vendor prefixes
     require("postcss-reporter")({ clearMessages: true })
   ]
 
