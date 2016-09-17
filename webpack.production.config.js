@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
 
 /**
  * This is the Webpack configuration file for production.
@@ -30,6 +31,7 @@ module.exports = {
   },
 
   resolve: {
+    root: path.resolve(__dirname, 'src'),
     extensions: ['', '.js', '.jsx', '.css']
   },
 
