@@ -20,7 +20,6 @@ module.exports = {
   // Set entry point to ./src/main and include necessary files for hot load
   entry:  [
     "webpack-dev-server/client?http://localhost:9090",
-    "webpack/hot/only-dev-server",
     "./src/main"
   ],
 
@@ -34,7 +33,6 @@ module.exports = {
 
   // Necessary plugins for hot load
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin('style.css', { allChunks: true })
   ],
@@ -42,10 +40,10 @@ module.exports = {
   // Transform source code using Babel and React Hot Loader
   module: {
     loaders: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ["react-hot", "babel-loader"] },
-      { 
-        test: /\.css$/, 
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?importLoaders=1!postcss-loader') 
+      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ["babel-loader"] },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?importLoaders=1!postcss-loader')
       },
       { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'url-loader?limit=8192' }
     ]
@@ -60,7 +58,7 @@ module.exports = {
   // Additional plugins for CSS post processing using postcss-loader
   postcss: [
     require('postcss-import')(),
-    require('postcss-cssnext')(), 
+    require('postcss-cssnext')(),
     require('postcss-focus')(), //add a :focus to every :hover
     require("postcss-reporter")({ clearMessages: true })
   ]
